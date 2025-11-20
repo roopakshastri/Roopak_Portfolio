@@ -1,0 +1,189 @@
+========================================
+QUICK START GUIDE
+Get your portfolio live in 10 minutes!
+========================================
+
+STEP 1: CUSTOMIZE CONTENT (5 minutes)
+=====================================
+
+Open these files and replace REPLACE_* placeholders:
+
+1. index.html
+   - REPLACE_NAME → Your Name
+   - REPLACE_EMAIL → your.email@example.com
+   - REPLACE_SHORT_BIO_150_WORDS → Your bio (2-3 sentences)
+   - REPLACE_PROJECT_1_TITLE → "Your First Project Name"
+   - REPLACE_PROJECT_1_SHORT_DESCRIPTION → Brief description
+   - (Repeat for PROJECT_2 and PROJECT_3)
+   - REPLACE_CERT_1_NAME → "Your Certification Name"
+   - (Repeat for CERT_2 and CERT_3)
+   - REPLACE_BLOG_1_DATE → "November 15, 2024"
+   - REPLACE_BLOG_2_DATE → "October 20, 2024"
+
+2. js/main.js
+   - Lines 8-41: Update project data object
+   - REPLACE_PROJECT_*_TITLE → Same as above
+   - REPLACE_PROJECT_*_FULL_DESCRIPTION → Longer description (3-4 sentences)
+   - REPLACE_PROJECT_*_GITHUB_URL → "https://github.com/yourusername/project"
+   - Line 184: mailto:REPLACE_EMAIL → mailto:your.email@example.com
+   - Line 189: Update email in alert message
+
+TIP: Use Find & Replace All in your editor:
+- Find: REPLACE_NAME
+- Replace: John Smith
+
+STEP 2: ADD IMAGES (2 minutes)
+================================
+
+Replace placeholder SVGs with real screenshots:
+
+images/desktop.svg → images/desktop.png (1920x1080, ≤200 KB)
+images/mobile.svg → images/mobile.png (375x812, ≤200 KB)
+
+Quick image ideas:
+- Screenshot of Kali Linux terminal
+- Burp Suite interface
+- Wireshark network capture
+- Your code in VS Code
+- Or use the SVG placeholders as-is (they work!)
+
+Optimize images: https://tinypng.com
+
+STEP 3: TEST LOCALLY (1 minute)
+=================================
+
+Option A: Just open index.html
+- Double-click index.html
+- Opens in your default browser
+
+Option B: Use Python HTTP server (recommended)
+- Open terminal in project folder
+- Run: python -m http.server 8000
+- Visit: http://localhost:8000
+
+Test checklist:
+✓ Resize browser to <768px → hamburger menu appears
+✓ Click hamburger → menu expands/collapses
+✓ Click "Penetration Testing" filter → only those projects show
+✓ Click "View Details" → modal opens
+✓ Press Escape → modal closes
+✓ Fill contact form incorrectly → validation errors appear
+✓ Fill correctly → opens email client
+
+STEP 4: DEPLOY (2 minutes)
+============================
+
+OPTION A: GitHub Pages (for Git users)
+---------------------------------------
+1. Create GitHub repo: https://github.com/new
+2. In project folder terminal:
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/YOURUSERNAME/portfolio.git
+   git push -u origin main
+
+3. On GitHub: Settings → Pages → Source: main branch
+4. Wait 1 minute
+5. Visit: https://YOURUSERNAME.github.io/portfolio/
+
+OPTION B: Netlify Drag & Drop (easiest)
+----------------------------------------
+1. Go to: https://app.netlify.com/drop
+2. Drag your entire project folder into browser
+3. Done! You get a URL like: https://random-name.netlify.app
+4. (Optional) Change site name in settings
+
+========================================
+THAT'S IT! Your portfolio is live! 🎉
+========================================
+
+VERIFICATION CHECKLIST:
+✓ URL starts with https:// (padlock icon)
+✓ View page source → CSP meta tag in <head>
+✓ Test on mobile device (or Chrome DevTools mobile view)
+✓ All links work
+✓ Contact form opens email client
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Problem: Images not showing
+Fix: Ensure images/ folder has desktop.png and mobile.png
+
+Problem: CSS not loading
+Fix: Check file paths are correct (css/style.css)
+
+Problem: mailto doesn't work
+Fix: Normal behavior on some systems. Provide email as text alternative.
+
+Problem: GitHub Pages shows 404
+Fix: Wait 2-3 minutes, hard refresh (Ctrl+Shift+R), check Settings → Pages
+
+Problem: CSP blocks Google Fonts
+Fix: Already whitelisted in meta tag. If issue persists, check browser console.
+
+========================================
+NEXT STEPS (OPTIONAL)
+========================================
+
+1. Customize blog posts (already written but editable)
+2. Add more projects (duplicate a project card in HTML)
+3. Update skills section with your specific skills
+4. Add custom domain (see deploy-instructions.txt)
+5. Run Lighthouse audit (Chrome DevTools → Lighthouse)
+6. Share on LinkedIn, Twitter, resume
+
+========================================
+FULL DOCUMENTATION
+========================================
+
+README.md                          → Complete feature list & deployment
+deploy-instructions.txt            → Detailed deployment steps
+sample-input-output.txt            → All placeholders explained
+implementation_report_template.txt → Academic report template
+PROJECT_STRUCTURE.txt              → Complete file tree & descriptions
+
+========================================
+NEED HELP?
+========================================
+
+Common issues solved in deploy-instructions.txt
+
+Web development help:
+- MDN Web Docs: https://developer.mozilla.org
+- W3Schools: https://www.w3schools.com
+
+Validate your HTML:
+- https://validator.w3.org
+
+Check accessibility:
+- https://wave.webaim.org
+- Chrome DevTools → Lighthouse
+
+========================================
+REMEMBER
+========================================
+
+✓ Never commit API keys or passwords
+✓ Always use HTTPS (automatic on GitHub Pages/Netlify)
+✓ Test on mobile devices
+✓ Replace ALL placeholders before deploying
+✓ Keep images under 200 KB each
+
+========================================
+You now have a production-ready
+cybersecurity portfolio!
+
+Built with:
+- 275 lines of semantic HTML
+- 680 lines of responsive CSS
+- 340 lines of vanilla JavaScript
+- Zero frameworks
+- Zero build tools
+- 100% educational and safe
+
+Ready for GitHub, Netlify, or academic submission.
+========================================

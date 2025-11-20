@@ -1,0 +1,25 @@
+{
+  "name": "REPLACE_NAME - Cybersecurity Portfolio",
+  "short_name": "REPLACE_NAME Portfolio",
+  "description": "Professional cybersecurity portfolio showcasing penetration testing, security research, and development projects",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#00d9ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ],
+  "categories": [
+    "portfolio",
+    "cybersecurity",
+    "technology"
+  ],
+  "lang": "en-US",
+  "dir": "ltr"
+}

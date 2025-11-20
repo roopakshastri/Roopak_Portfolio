@@ -1,0 +1,263 @@
+========================================
+DEPLOYMENT INSTRUCTIONS
+Cybersecurity Portfolio - REPLACE_NAME
+========================================
+
+This file contains copy-paste commands for deploying your portfolio to GitHub Pages or Netlify.
+
+========================================
+OPTION 1: GITHUB PAGES (FREE, SIMPLE)
+========================================
+
+PREREQUISITES:
+- Git installed (https://git-scm.com/downloads)
+- GitHub account (https://github.com)
+
+STEP-BY-STEP COMMANDS:
+
+1. Open a terminal/command prompt in your project folder (portfolio-REPLACE_NAME/)
+
+2. Initialize Git repository:
+   git init
+
+3. Add all files:
+   git add .
+
+4. Commit files:
+   git commit -m "Initial commit - Cybersecurity portfolio"
+
+5. Rename branch to main (if needed):
+   git branch -M main
+
+6. Create a new repository on GitHub (https://github.com/new):
+   - Name: portfolio (or any name)
+   - Visibility: Public
+   - Do NOT initialize with README
+
+7. Link your local repository to GitHub (replace REPLACE_USERNAME and portfolio with your values):
+   git remote add origin https://github.com/REPLACE_USERNAME/portfolio.git
+
+8. Push to GitHub:
+   git push -u origin main
+
+9. Enable GitHub Pages:
+   - Go to your repository on GitHub
+   - Click "Settings" → "Pages"
+   - Under "Source", select "main" branch and "/" (root)
+   - Click "Save"
+
+10. Wait ~1 minute, then visit:
+    https://REPLACE_USERNAME.github.io/portfolio/
+
+UPDATING YOUR SITE:
+After making changes to your files:
+   git add .
+   git commit -m "Update portfolio content"
+   git push
+
+Changes will appear in ~1 minute.
+
+========================================
+OPTION 2: NETLIFY (FREE, ADVANCED)
+========================================
+
+METHOD A: DRAG & DROP (EASIEST)
+--------------------------------
+1. Go to https://app.netlify.com/drop
+2. Drag your entire project folder (portfolio-REPLACE_NAME/) into the browser
+3. Netlify uploads and deploys automatically
+4. You'll receive a URL like: https://random-name-12345.netlify.app
+5. (Optional) Change site name: Site settings → Change site name
+
+METHOD B: NETLIFY CLI (RECOMMENDED FOR CSP HEADERS)
+----------------------------------------------------
+PREREQUISITES:
+- Node.js installed (https://nodejs.org)
+- Netlify account (https://www.netlify.com)
+
+STEP-BY-STEP COMMANDS:
+
+1. Install Netlify CLI globally:
+   npm install -g netlify-cli
+
+2. Navigate to your project folder:
+   cd portfolio-REPLACE_NAME
+
+3. Login to Netlify:
+   netlify login
+   (This opens a browser window - authorize the CLI)
+
+4. Deploy your site:
+   netlify deploy --prod
+
+5. Follow the prompts:
+   - Create & configure a new site? Yes
+   - Team: Select your team
+   - Site name: portfolio-REPLACE_NAME (or leave blank for random name)
+   - Publish directory: . (current directory)
+
+6. Deployment complete! URL shown in terminal.
+
+UPDATING YOUR SITE:
+After making changes:
+   netlify deploy --prod
+
+========================================
+NETLIFY SECURITY HEADERS (_headers file)
+========================================
+
+To enable HTTP security headers on Netlify, create a file named "_headers" (no extension) in your project root with this content:
+
+/*
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+COPY-PASTE CSP META TAG (already in index.html):
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+
+EXPLANATION:
+- default-src 'self': Only allow resources from same origin
+- style-src: Allow inline styles and Google Fonts
+- font-src: Allow fonts from Google Fonts CDN
+- script-src 'self': Only allow scripts from same origin (no external JS)
+- img-src 'self' data:: Allow images from same origin and data URIs
+- frame-ancestors 'none': Prevent clickjacking (no iframes)
+- form-action 'self' mailto:: Allow form submission to same origin and mailto links
+
+========================================
+CUSTOM DOMAIN (OPTIONAL)
+========================================
+
+GITHUB PAGES:
+1. Buy a domain (e.g., Namecheap, Google Domains)
+2. In your domain registrar, add DNS records:
+   - Type: A, Host: @, Value: 185.199.108.153
+   - Type: A, Host: @, Value: 185.199.109.153
+   - Type: A, Host: @, Value: 185.199.110.153
+   - Type: A, Host: @, Value: 185.199.111.153
+3. In GitHub Pages settings, add your custom domain
+4. Wait 24-48 hours for DNS propagation
+5. Enable "Enforce HTTPS" in GitHub Pages settings
+
+NETLIFY:
+1. Buy a domain
+2. In Netlify dashboard: Domain settings → Add custom domain
+3. Follow Netlify's instructions to update DNS records
+4. HTTPS is automatic (Let's Encrypt certificate)
+
+========================================
+VERIFICATION CHECKLIST
+========================================
+
+After deployment, verify:
+
+1. HTTPS Enabled:
+   - URL starts with https:// (not http://)
+   - Browser shows padlock icon
+
+2. CSP Active:
+   - View page source → verify <meta http-equiv="Content-Security-Policy" ...> in <head>
+   - Open browser console → no CSP errors
+
+3. Security Headers (Netlify only):
+   - Visit https://securityheaders.com
+   - Enter your deployed URL
+   - Check for A or A+ rating
+
+4. Mobile Responsive:
+   - Test on mobile device or use browser DevTools
+   - Verify hamburger menu works
+   - Check all sections display correctly
+
+5. Contact Form:
+   - Submit form → opens email client with pre-filled subject/body
+   - If mailto doesn't work, provide alternative contact method
+
+6. All Links Work:
+   - Click all navigation links
+   - Verify project modals open/close
+   - Check external links (GitHub, etc.)
+
+========================================
+TROUBLESHOOTING
+========================================
+
+ISSUE: GitHub Pages shows 404 error
+FIX: Ensure "index.html" is in the root directory (not in a subfolder)
+
+ISSUE: CSS/JS not loading on GitHub Pages
+FIX: Check file paths are relative (href="css/style.css" not href="/css/style.css")
+
+ISSUE: CSP blocks Google Fonts
+FIX: Verify CSP meta tag includes:
+     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+     font-src 'self' https://fonts.gstatic.com;
+
+ISSUE: Netlify CLI says "command not found"
+FIX: Restart terminal after installing, or use: npx netlify-cli deploy --prod
+
+ISSUE: mailto: link doesn't work
+FIX: This is expected on some systems. Provide alternative: "Email me at REPLACE_EMAIL"
+
+ISSUE: Images not showing after deployment
+FIX: Ensure images are in images/ folder and file names match exactly (case-sensitive)
+
+========================================
+LOCALHOST TESTING (BEFORE DEPLOYMENT)
+========================================
+
+OPTION A: Simple HTTP Server (Python)
+--------------------------------------
+If you have Python installed:
+
+Python 3:
+   python -m http.server 8000
+
+Python 2:
+   python -m SimpleHTTPServer 8000
+
+Then visit: http://localhost:8000
+
+OPTION B: VS Code Live Server Extension
+----------------------------------------
+1. Install "Live Server" extension in VS Code
+2. Right-click index.html → "Open with Live Server"
+3. Site opens at http://127.0.0.1:5500
+
+OPTION C: Just open index.html
+-------------------------------
+Double-click index.html to open in default browser
+(Note: Some features may not work without a server due to CORS)
+
+========================================
+FINAL NOTES
+========================================
+
+- Both GitHub Pages and Netlify enforce HTTPS automatically (no action needed)
+- GitHub Pages is simpler but Netlify offers more features (headers, redirects, forms)
+- Update your site by pushing to GitHub (Pages) or running netlify deploy (Netlify)
+- Never commit API keys or passwords to your repository
+- For academic submission, include the deployed URL in your report
+
+========================================
+SUPPORT RESOURCES
+========================================
+
+GitHub Pages Documentation:
+https://docs.github.com/en/pages
+
+Netlify Documentation:
+https://docs.netlify.com
+
+CSP Reference:
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+
+Security Headers Guide:
+https://owasp.org/www-project-secure-headers/
+
+========================================

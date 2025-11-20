@@ -1,0 +1,49 @@
+DESKTOP SCREENSHOT PLACEHOLDER
+==============================
+
+This file represents where your desktop.png should be.
+
+INSTRUCTIONS:
+-------------
+1. Create or obtain a project screenshot (1920x1080px recommended)
+2. Name it exactly: desktop.png
+3. Place it in this /images/ folder
+4. Delete this PLACEHOLDER-desktop.txt file
+
+TEMPORARY SOLUTION:
+-------------------
+If you need to test the site before you have screenshots, you can:
+
+Option 1: Use a placeholder image service
+- Replace src in index.html:
+  <img src="https://via.placeholder.com/1200x800/0a192f/00d9ff?text=Project+Screenshot">
+
+Option 2: Use a solid color PNG
+- Create a simple colored rectangle in any image editor
+- Export as PNG (1920x1080px)
+- Name it desktop.png
+
+Option 3: Screenshot this portfolio itself
+- Deploy the site
+- Take a screenshot of the homepage
+- Use that as your placeholder temporarily
+
+RECOMMENDED SPECS:
+------------------
+- Dimensions: 1920x1080px (or 1200x800px)
+- Format: PNG (better for screenshots with text)
+- File size: <200KB (compress with TinyPNG.com)
+- Content: Actual project interface, terminal output, or demo
+
+WHERE IT'S USED:
+----------------
+- Project card 1 (Network Vulnerability Scanner)
+- Project card 3 (API Security Fuzzer)
+- Project modal images
+
+TOOLS FOR SCREENSHOTS:
+----------------------
+- Windows: Snipping Tool, Greenshot
+- Mac: Cmd+Shift+4
+- Linux: gnome-screenshot, Spectacle
+- Browser: DevTools > Capture screenshot

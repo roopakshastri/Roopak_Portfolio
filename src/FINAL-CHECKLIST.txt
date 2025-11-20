@@ -1,0 +1,715 @@
+===============================================================================
+FINAL PRE-DEPLOYMENT CHECKLIST
+Complete this before deploying your portfolio
+===============================================================================
+
+This checklist ensures your portfolio is ready for deployment and will work
+correctly when live. Check off each item as you complete it.
+
+===============================================================================
+SECTION 1: CONTENT CUSTOMIZATION (REQUIRED)
+===============================================================================
+
+PERSONAL INFORMATION (index.html)
+----------------------------------
+[ ] Replaced REPLACE_NAME with your full name (9 occurrences)
+[ ] Replaced REPLACE_EMAIL with your email (2 occurrences + js/main.js)
+[ ] Replaced REPLACE_LINKEDIN with your LinkedIn username
+[ ] Replaced REPLACE_GITHUB with your GitHub username
+[ ] Replaced REPLACE_TWITTER with your Twitter handle
+[ ] Replaced REPLACE_YEAR with certification years (4 occurrences)
+[ ] Replaced or removed REPLACE_PGP_FINGERPRINT
+[ ] Updated manifest.json with your name
+
+How to verify:
+1. Open index.html in text editor
+2. Press Ctrl+F (or Cmd+F) and search for "REPLACE"
+3. Should find ZERO results (except in comments/documentation)
+4. All placeholders should be replaced with your information
+
+CERTIFICATIONS (index.html)
+---------------------------
+[ ] Updated certification names to match what you actually have
+[ ] Updated certification years
+[ ] OR removed certifications you don't have
+[ ] OR changed to "In Progress" if applicable
+
+Tip: If you don't have a certification yet, you can:
+- Remove the cert-card div entirely
+- Change to "Currently Studying" or "Planned 2026"
+- Add certifications you DO have instead
+
+SKILLS (index.html)
+-------------------
+[ ] Skills in all 4 categories match your actual expertise
+[ ] Removed skills you don't have
+[ ] Added skills you do have
+[ ] Categories make sense for your focus area
+
+Example: If you're focused on cloud security, change "Offensive Security"
+category to "Cloud Security" with relevant skills.
+
+PROJECTS (index.html + js/main.js)
+----------------------------------
+[ ] Updated project titles to your actual projects
+[ ] Updated project descriptions (2-3 sentences each)
+[ ] Updated technology tags for each project
+[ ] Updated projectData object in js/main.js to match
+[ ] data-category attributes match filter buttons
+
+Don't have 3 projects yet? Options:
+- Use academic projects
+- Use lab environments you've built
+- Use tools you've created for practice
+- Include CTF challenges you've solved
+
+BLOG POSTS (index.html) - Optional
+-----------------------------------
+[ ] Updated blog post titles
+[ ] Updated blog post content (~150 words each)
+[ ] Updated dates to recent dates
+[ ] Changed categories if needed
+
+OR:
+[ ] Removed blog section entirely if not using
+
+To remove blog section:
+1. Delete <section id="blog"> ... </section>
+2. Remove "Blog" link from navigation menu
+
+HERO SECTION (index.html) - Optional
+-------------------------------------
+[ ] Updated hero subtitle if desired
+[ ] Updated hero description to match your focus
+[ ] Kept it professional and concise
+
+===============================================================================
+SECTION 2: IMAGES (REQUIRED FOR PROFESSIONAL LOOK)
+===============================================================================
+
+PLACEHOLDER IMAGES
+------------------
+[ ] Replaced images/desktop.png with actual screenshot (1920x1080px)
+[ ] Replaced images/mobile.png with actual screenshot (375x667px)
+[ ] Compressed images to <200KB each (use TinyPNG.com)
+[ ] Images are clear and professional-looking
+
+Temporary solution if you don't have images yet:
+- Use placeholder service: https://via.placeholder.com/1200x800
+- Take screenshot of this portfolio itself
+- Create simple mockups in Canva/Figma
+
+FAVICON (Optional but Recommended)
+----------------------------------
+[ ] Created favicon.ico using favicon.io or similar
+[ ] Placed favicon.ico in root directory
+[ ] Tested favicon appears in browser tab
+
+Or:
+[ ] Decided to skip favicon for now (site works without it)
+
+DOCUMENTATION SCREENSHOTS (for README)
+--------------------------------------
+[ ] Added docs/screenshots/homepage-demo.png
+[ ] Added docs/screenshots/projects-demo.png
+[ ] Screenshots show your customized, deployed site
+
+Or:
+[ ] Will add screenshots after deployment
+
+===============================================================================
+SECTION 3: LOCAL TESTING (REQUIRED)
+===============================================================================
+
+FUNCTIONALITY TESTING
+----------------------
+[ ] Opened index.html in browser (double-click or local server)
+[ ] Navigation links scroll to correct sections
+[ ] Hamburger menu works on mobile (resize browser to <768px width)
+[ ] Project filter buttons work correctly
+[ ] Clicking project card opens modal
+[ ] Modal closes with X button
+[ ] Modal closes with ESC key
+[ ] Modal closes when clicking outside
+[ ] Contact form shows error for empty fields
+[ ] Contact form shows error for invalid email
+[ ] Contact form accepts valid inputs
+
+To test hamburger menu:
+1. Resize browser window to <768px width
+2. Click hamburger icon (three lines)
+3. Menu should expand/collapse
+
+To test project filter:
+1. Click "Penetration Testing" button
+2. Should show only pentest projects
+3. Click "All" - all projects reappear
+
+VISUAL INSPECTION
+-----------------
+[ ] Your name appears in header
+[ ] Your name appears in footer
+[ ] Your email appears in contact section
+[ ] Social media links point to YOUR profiles
+[ ] No "REPLACE_*" text visible anywhere on page
+[ ] Images display (or placeholders if not ready)
+[ ] Colors look good (dark navy, cyan accent)
+[ ] Text is readable on all backgrounds
+[ ] No obvious layout breaks
+
+RESPONSIVE TESTING
+------------------
+[ ] Tested at 1920px width (desktop)
+[ ] Tested at 1024px width (laptop)
+[ ] Tested at 768px width (tablet)
+[ ] Tested at 375px width (mobile)
+[ ] All sections display correctly at each size
+[ ] Images don't overflow or distort
+[ ] Text is readable at all sizes
+[ ] No horizontal scrollbar at any size
+
+To test responsive design:
+1. Press F12 to open DevTools
+2. Click "Toggle device toolbar" (Ctrl+Shift+M)
+3. Select different device sizes
+4. Verify layout adapts correctly
+
+CONSOLE CHECK
+-------------
+[ ] Opened browser DevTools (F12)
+[ ] Checked Console tab
+[ ] NO red errors appear
+[ ] NO yellow warnings about missing files
+
+Common errors to check:
+- "Failed to load resource: favicon.ico" (okay if you haven't added favicon)
+- "Refused to load..." (CSP violation - should not happen)
+- "Script error" or "Uncaught TypeError" (needs fixing)
+
+===============================================================================
+SECTION 4: CODE VALIDATION (RECOMMENDED)
+===============================================================================
+
+HTML VALIDATION
+---------------
+[ ] Went to https://validator.w3.org/
+[ ] Selected "Validate by Direct Input"
+[ ] Copied entire index.html content
+[ ] Pasted and clicked "Check"
+[ ] Result: 0 errors (warnings are okay)
+
+Common HTML errors:
+- Unclosed tags
+- Missing alt attributes on images
+- Duplicate IDs
+
+CSS VALIDATION
+--------------
+[ ] Went to https://jigsaw.w3.org/css-validator/
+[ ] Selected "By direct input"
+[ ] Copied entire css/style.css content
+[ ] Pasted and clicked "Check"
+[ ] Result: Valid CSS3 (vendor warnings are okay)
+
+JAVASCRIPT SYNTAX
+-----------------
+[ ] Opened js/main.js in VS Code or similar editor
+[ ] No syntax errors highlighted
+[ ] No obvious typos or mistakes
+
+===============================================================================
+SECTION 5: GIT & GITHUB SETUP (REQUIRED FOR DEPLOYMENT)
+===============================================================================
+
+GIT INSTALLATION
+----------------
+[ ] Git is installed on my computer
+[ ] Can run: git --version in terminal/command prompt
+
+If not installed:
+- Windows: Download from https://git-scm.com/
+- Mac: Install Xcode Command Line Tools
+- Linux: sudo apt-get install git
+
+GITHUB ACCOUNT
+--------------
+[ ] Have GitHub account (or created new one)
+[ ] Email verified
+[ ] Logged in to GitHub.com
+
+Create account:
+- Go to https://github.com/signup
+- Use professional email if possible
+- Choose username wisely (appears in portfolio URL)
+
+REPOSITORY CREATION
+-------------------
+[ ] Created new repository on GitHub
+[ ] Repository name: portfolio (or similar)
+[ ] Visibility: Public (required for free GitHub Pages)
+[ ] Did NOT initialize with README, .gitignore, or license
+[ ] Repository created successfully
+
+Repository URL format:
+https://github.com/YOUR-USERNAME/YOUR-REPO-NAME
+
+LOCAL GIT SETUP
+---------------
+[ ] Opened terminal/command prompt in portfolio folder
+[ ] Ran: git init
+[ ] Ran: git add .
+[ ] Ran: git commit -m "Initial portfolio commit"
+[ ] Ran: git branch -M main
+[ ] Added remote: git remote add origin https://github.com/USERNAME/REPO.git
+[ ] Ran: git push -u origin main
+[ ] Files uploaded to GitHub successfully
+
+Verify upload:
+1. Go to your GitHub repository
+2. Refresh page
+3. All files should be visible
+
+===============================================================================
+SECTION 6: DEPLOYMENT (REQUIRED)
+===============================================================================
+
+PLATFORM CHOICE
+---------------
+[ ] Decided on deployment platform:
+    [ ] GitHub Pages (easiest, free)
+    [ ] Netlify (more features, free)
+    [ ] Custom server (advanced)
+
+For this checklist, assuming GitHub Pages. For Netlify, see deploy-instructions.txt.
+
+GITHUB PAGES SETUP
+------------------
+[ ] Went to repository Settings
+[ ] Clicked "Pages" in sidebar
+[ ] Under "Source", selected "main" branch
+[ ] Selected "/ (root)" folder
+[ ] Clicked "Save"
+[ ] Waited 2-3 minutes
+[ ] Saw success message: "Your site is live at https://..."
+[ ] Visited the URL and site loads
+
+Your URL format:
+https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
+
+HTTPS ENFORCEMENT
+-----------------
+[ ] Still in Pages settings
+[ ] Checked "Enforce HTTPS" checkbox
+[ ] Waited 1-2 minutes for SSL provisioning
+[ ] Visited site with https:// - shows padlock icon
+[ ] No "Not Secure" warning in browser
+
+===============================================================================
+SECTION 7: POST-DEPLOYMENT UPDATES (REQUIRED)
+===============================================================================
+
+UPDATE SITE URL
+---------------
+[ ] Noted my live URL: https://_____________________.github.io/__________/
+[ ] Opened index.html
+[ ] Found all instances of REPLACE_SITE_URL
+[ ] Replaced with actual live URL
+[ ] Saved file
+[ ] Ran: git add index.html
+[ ] Ran: git commit -m "Update site URL"
+[ ] Ran: git push
+[ ] Waited 1-2 minutes for redeployment
+[ ] Refreshed site to verify update
+
+UPDATE PROJECT URLs (if applicable)
+-----------------------------------
+[ ] Updated REPLACE_PROJECT_URL with actual GitHub repo URLs
+[ ] Updated REPLACE_DEMO_URL with actual demo URLs
+[ ] Or removed links if don't have live demos yet
+
+===============================================================================
+SECTION 8: SECURITY VERIFICATION (REQUIRED)
+===============================================================================
+
+HTTPS CHECK
+-----------
+[ ] Visited site via https:// (not http://)
+[ ] Browser shows padlock icon
+[ ] Clicked padlock - shows "Connection is secure"
+[ ] Certificate is valid and trusted
+[ ] No mixed content warnings in console
+
+SSL CERTIFICATE
+---------------
+[ ] Clicked padlock icon in browser
+[ ] Clicked "Certificate" or "Connection is secure"
+[ ] Certificate issued by: Let's Encrypt (or similar CA)
+[ ] Certificate is valid (not expired)
+[ ] Certificate matches your domain
+
+CSP HEADER CHECK
+----------------
+[ ] Opened DevTools (F12)
+[ ] Went to Network tab
+[ ] Reloaded page
+[ ] Clicked first request (index.html)
+[ ] Checked Response Headers
+[ ] Found Content-Security-Policy header
+
+Note: GitHub Pages doesn't support custom HTTP headers, so CSP comes from
+meta tag. This is okay and still works.
+
+SECURITY HEADERS GRADE
+-----------------------
+[ ] Went to https://securityheaders.com
+[ ] Entered my portfolio URL
+[ ] Clicked "Scan"
+[ ] Result: Grade A, A+, or B (B is okay for GitHub Pages)
+
+Note: GitHub Pages may get B grade because it can't set all headers.
+This is acceptable. Netlify can achieve A+ with _headers file.
+
+CONSOLE ERRORS
+--------------
+[ ] Opened DevTools Console
+[ ] NO CSP violations (no "Refused to load..." errors)
+[ ] NO JavaScript errors
+[ ] Only message should be: "Portfolio initialized successfully"
+
+===============================================================================
+SECTION 9: FUNCTIONALITY VERIFICATION (REQUIRED)
+===============================================================================
+
+Test all features on your LIVE deployed site:
+
+NAVIGATION
+----------
+[ ] All nav links work and scroll to sections
+[ ] Smooth scrolling works
+[ ] Active link highlighting works as you scroll
+
+MOBILE MENU
+-----------
+[ ] Resized browser to <768px
+[ ] Hamburger icon appears
+[ ] Clicking hamburger opens menu
+[ ] Clicking link closes menu and scrolls
+
+PROJECT FILTER
+--------------
+[ ] All filter buttons work
+[ ] Projects show/hide correctly
+[ ] Animations are smooth
+[ ] "All" button shows all projects
+
+PROJECT MODAL
+-------------
+[ ] Clicking any project card opens modal
+[ ] Modal shows correct project information
+[ ] Clicking X closes modal
+[ ] Pressing ESC closes modal
+[ ] Clicking outside modal closes it
+[ ] Modal content is readable and formatted correctly
+
+CONTACT FORM
+------------
+[ ] Empty form shows errors when submitting
+[ ] Invalid email shows error
+[ ] Valid inputs are accepted
+[ ] Clicking "Send Message" opens email client (mailto)
+[ ] Email populates with form data
+
+LINKS
+-----
+[ ] All social media links work
+[ ] Links open in new tab (external links)
+[ ] No broken links (404 errors)
+
+===============================================================================
+SECTION 10: CROSS-BROWSER TESTING (RECOMMENDED)
+===============================================================================
+
+[ ] Tested in Chrome (latest version)
+[ ] Tested in Firefox
+[ ] Tested in Safari (if on Mac)
+[ ] Tested in Edge
+[ ] Tested on actual mobile phone
+    [ ] iPhone Safari
+    [ ] Android Chrome
+
+Common issues:
+- Fonts may look different in Safari
+- Animations may be slower in Firefox
+- Mobile scrolling should be smooth
+
+===============================================================================
+SECTION 11: PERFORMANCE TESTING (RECOMMENDED)
+===============================================================================
+
+LIGHTHOUSE AUDIT
+----------------
+[ ] Opened site in Chrome
+[ ] Pressed F12 to open DevTools
+[ ] Clicked "Lighthouse" tab
+[ ] Checked all categories
+[ ] Clicked "Generate report"
+[ ] Performance score: _____ (target: >90)
+[ ] Accessibility score: _____ (target: 100)
+[ ] Best Practices score: _____ (target: 95+)
+[ ] SEO score: _____ (target: >90)
+
+If scores are low:
+- Compress images more
+- Fix any accessibility issues Lighthouse reports
+- Follow Lighthouse suggestions
+
+PAGE LOAD TIME
+--------------
+[ ] Opened site in incognito/private mode (fresh cache)
+[ ] Opened DevTools Network tab
+[ ] Reloaded page
+[ ] Load time: _____ seconds (target: <3 seconds)
+[ ] Page size: _____ KB (target: <1MB)
+
+===============================================================================
+SECTION 12: ACCESSIBILITY TESTING (RECOMMENDED)
+===============================================================================
+
+KEYBOARD NAVIGATION
+-------------------
+[ ] Pressed Tab key - focus moves through elements
+[ ] Pressed Enter on links - navigates correctly
+[ ] Pressed Space on buttons - activates them
+[ ] Pressed ESC with modal open - closes modal
+[ ] Focus indicators are visible
+[ ] Tab order is logical (top to bottom, left to right)
+
+SCREEN READER (if available)
+----------------------------
+[ ] Tested with NVDA (Windows) or VoiceOver (Mac)
+[ ] Page structure announced correctly
+[ ] Headings are announced in order
+[ ] Form labels are read with inputs
+[ ] ARIA labels are announced
+
+AUTOMATED ACCESSIBILITY
+-----------------------
+[ ] Went to https://wave.webaim.org
+[ ] Entered portfolio URL
+[ ] Result: 0 errors (warnings are usually okay)
+
+Common accessibility issues:
+- Missing alt text on images
+- Low color contrast
+- Missing form labels
+- Incorrect heading hierarchy
+
+===============================================================================
+SECTION 13: FINAL POLISH (OPTIONAL)
+===============================================================================
+
+CONTENT REVIEW
+--------------
+[ ] Read through entire site for typos
+[ ] Spell-checked all text
+[ ] Grammar is correct
+[ ] Professional tone throughout
+[ ] No placeholder "Lorem ipsum" text
+
+VISUAL REVIEW
+-------------
+[ ] Images are professional quality
+[ ] Colors are consistent
+[ ] Spacing looks even
+[ ] Fonts are readable
+[ ] Nothing looks "broken" or misaligned
+
+PROFESSIONAL REVIEW
+-------------------
+[ ] Name and contact info are correct
+[ ] Email is professional (not jokeemail@example.com)
+[ ] Social media links point to professional profiles
+[ ] Content represents your actual skills/experience
+
+===============================================================================
+SECTION 14: SUBMISSION PREPARATION (FOR ACADEMIC USE)
+===============================================================================
+
+DOCUMENTATION
+-------------
+[ ] Filled out implementation_report_template.txt
+[ ] Added actual deployed URL to report
+[ ] Added actual Lighthouse scores
+[ ] Added actual security headers grade
+[ ] Described challenges encountered
+
+SCREENSHOTS
+-----------
+[ ] Captured homepage screenshot
+[ ] Captured projects section screenshot
+[ ] Captured mobile view screenshot
+[ ] Captured security headers grade screenshot
+[ ] Captured Lighthouse report screenshot
+[ ] Saved all screenshots to docs/screenshots/
+
+DEMO VIDEO (if required)
+------------------------
+[ ] Recorded 30-second demo following DEMO-SCRIPT.txt
+[ ] Showed interactive features
+[ ] Showed responsive design
+[ ] Narrated clearly
+[ ] Exported at 1080p
+
+REPOSITORY
+----------
+[ ] Repository is public on GitHub
+[ ] README.md is present
+[ ] All files are committed
+[ ] License file is present
+[ ] .gitignore is present
+
+===============================================================================
+SECTION 15: SHARING & PROMOTION (OPTIONAL)
+===============================================================================
+
+PROFESSIONAL SHARING
+--------------------
+[ ] Added portfolio URL to resume
+[ ] Added portfolio URL to LinkedIn profile
+[ ] Added portfolio URL to GitHub profile README
+[ ] Updated email signature with portfolio link
+
+SOCIAL MEDIA
+------------
+[ ] Shared on LinkedIn with project description
+[ ] Shared on Twitter/X
+[ ] Posted in relevant cybersecurity communities
+[ ] Tagged relevant hashtags (#cybersecurity #infosec)
+
+===============================================================================
+FINAL VERIFICATION
+===============================================================================
+
+CRITICAL (MUST ALL BE CHECKED):
+--------------------------------
+[ ] Site loads via HTTPS
+[ ] No REPLACE_* text visible on live site
+[ ] All navigation works
+[ ] No console errors
+[ ] Tested on mobile phone
+[ ] Personal information is correct
+[ ] Contact email is correct
+
+IMPORTANT (SHOULD BE CHECKED):
+-------------------------------
+[ ] Images are professional (not placeholder grays)
+[ ] Security headers grade A or B
+[ ] Lighthouse scores >85 in all categories
+[ ] Tested in 2+ browsers
+[ ] Keyboard navigation works
+[ ] Project filter works
+[ ] Modal works
+
+RECOMMENDED (NICE TO HAVE):
+---------------------------
+[ ] Favicon added
+[ ] Custom domain configured (optional)
+[ ] Screenshots added to docs/
+[ ] Implementation report completed
+[ ] Demo video recorded
+[ ] Shared on social media
+
+===============================================================================
+DEPLOYMENT SIGN-OFF
+===============================================================================
+
+I confirm that:
+[ ] I have completed all CRITICAL items
+[ ] I have completed all IMPORTANT items  
+[ ] My portfolio is live and functional
+[ ] I have tested the site thoroughly
+[ ] All personal information is accurate
+[ ] The site represents me professionally
+
+Live Site URL: ________________________________________
+
+Deployed Date: ________________________________________
+
+GitHub Repo: __________________________________________
+
+Lighthouse Scores:
+- Performance: _____
+- Accessibility: _____
+- Best Practices: _____
+- SEO: _____
+
+Security Headers Grade: _____
+
+Notes:
+_______________________________________________________________
+_______________________________________________________________
+_______________________________________________________________
+
+===============================================================================
+TROUBLESHOOTING QUICK REFERENCE
+===============================================================================
+
+Site won't load:
+→ Wait 5 minutes after enabling GitHub Pages
+→ Check repository is Public
+→ Verify Pages settings show "Your site is live"
+
+REPLACE_* still visible:
+→ Edit index.html and replace all placeholders
+→ Commit and push changes
+→ Wait 2 minutes for redeployment
+
+Images not showing:
+→ Check images are committed to GitHub
+→ Verify file names match exactly (case-sensitive)
+→ Clear browser cache
+
+Filter buttons not working:
+→ Check browser console for JavaScript errors
+→ Verify js/main.js is loaded
+→ Check file is committed to repository
+
+HTTPS not working:
+→ Enable "Enforce HTTPS" in Pages settings
+→ Wait 5-10 minutes for SSL provisioning
+→ Clear browser cache
+
+Low security score:
+→ GitHub Pages limitation - B grade is acceptable
+→ Consider Netlify for A+ grade
+→ Ensure CSP meta tag is in <head>
+
+Modal won't open:
+→ Check browser console for errors
+→ Verify project title in HTML matches projectData in JS
+→ Test in different browser
+
+===============================================================================
+CONGRATULATIONS!
+===============================================================================
+
+If you've checked off all CRITICAL and IMPORTANT items, your portfolio is
+ready for the world!
+
+Your cybersecurity portfolio is now:
+✅ Live and accessible via HTTPS
+✅ Secure with proper headers
+✅ Responsive across all devices
+✅ Accessible to all users
+✅ Professional and polished
+
+Share it with confidence! 🚀🔐
+
+===============================================================================
+END OF CHECKLIST
+===============================================================================
+
+Keep this checklist for future updates. When you add new projects or content,
+review the relevant sections to ensure quality.
+
+Good luck with your cybersecurity career!

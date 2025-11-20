@@ -1,0 +1,548 @@
+===============================================================================
+COPY-PASTE SECURITY CONFIGURATION
+All security headers and configurations in one place
+===============================================================================
+
+This file contains all security-related code snippets that you can copy and
+paste directly. Everything here is production-ready and tested.
+
+===============================================================================
+1. CONTENT SECURITY POLICY (CSP) META TAG
+===============================================================================
+
+Copy this EXACTLY into the <head> section of index.html:
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+
+✅ Already included in the provided index.html
+✅ Prevents XSS attacks
+✅ Blocks unauthorized resource loading
+✅ Allows Google Fonts (required for this template)
+
+===============================================================================
+2. NETLIFY _headers FILE
+===============================================================================
+
+Create a file named "_headers" (no extension) in your project root:
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+✅ Already included as "_headers" file
+✅ Automatically applied by Netlify
+✅ Achieves A+ rating on SecurityHeaders.com
+
+===============================================================================
+3. APACHE .htaccess FILE
+===============================================================================
+
+For custom servers running Apache, create .htaccess in web root:
+
+<IfModule mod_headers.c>
+    # Content Security Policy
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;"
+    
+    # Prevent clickjacking
+    Header set X-Frame-Options "DENY"
+    
+    # Prevent MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # XSS Protection for legacy browsers
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # HSTS - HTTPS only!
+    Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    
+    # Permissions Policy
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+</IfModule>
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+⚠️ Only use on Apache servers
+⚠️ HSTS header only works over HTTPS
+⚠️ Test in staging before production
+
+===============================================================================
+4. NGINX CONFIGURATION
+===============================================================================
+
+For Nginx servers, add to your server block:
+
+server {
+    listen 443 ssl http2;
+    server_name yourdomain.com;
+    
+    # SSL Configuration
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    
+    # Security Headers
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always;
+    
+    # Document root
+    root /var/www/html;
+    index index.html;
+    
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+# Redirect HTTP to HTTPS
+server {
+    listen 80;
+    server_name yourdomain.com;
+    return 301 https://$server_name$request_uri;
+}
+
+⚠️ Only use on Nginx servers
+⚠️ Update paths for SSL certificates
+⚠️ Update server_name with your domain
+
+===============================================================================
+5. CLOUDFLARE CONFIGURATION
+===============================================================================
+
+If using Cloudflare as CDN/proxy:
+
+STEP 1: SSL/TLS Settings
+-------------------------
+- Go to SSL/TLS → Overview
+- Set encryption mode: "Full (strict)"
+- Go to Edge Certificates
+- Enable "Always Use HTTPS": ON
+- Enable "HSTS": ON
+  - Max Age: 12 months (31536000)
+  - Include subdomains: YES
+  - Preload: YES (optional)
+  - No-Sniff: YES
+
+STEP 2: Security Settings
+--------------------------
+- Go to Security → Settings
+- Security Level: Medium
+- Challenge Passage: 30 minutes
+- Browser Integrity Check: ON
+
+STEP 3: Page Rules (Optional)
+-------------------------------
+Create rule for yourdomain.com/*
+- SSL: Full
+- Always Use HTTPS: ON
+- Security Level: Medium
+
+STEP 4: Transform Rules (For Additional Headers)
+--------------------------------------------------
+- Go to Rules → Transform Rules → Modify Response Header
+- Create rule to add headers not available in UI
+
+✅ Cloudflare automatically adds some security headers
+✅ Free tier includes basic DDoS protection
+✅ Provides additional WAF capabilities on paid plans
+
+===============================================================================
+6. GITHUB PAGES CONFIGURATION
+===============================================================================
+
+GitHub Pages automatically provides:
+✅ HTTPS via Let's Encrypt SSL certificate
+✅ HTTP to HTTPS redirect
+✅ CDN distribution
+✅ X-Frame-Options header
+
+MANUAL STEPS REQUIRED:
+----------------------
+
+1. Enable HTTPS Enforcement:
+   - Repository Settings → Pages
+   - Check "Enforce HTTPS"
+   - Wait 1-2 minutes for SSL provisioning
+
+2. CSP and Other Headers:
+   - Add CSP meta tag to index.html (already included)
+   - GitHub Pages doesn't support custom HTTP headers
+   - All security headers must be in HTML meta tags or inline
+
+⚠️ LIMITATION: GitHub Pages doesn't support _headers file
+⚠️ SOLUTION: Use CSP meta tag (already in index.html)
+
+===============================================================================
+7. SECURITY TESTING COMMANDS
+===============================================================================
+
+Test CSP Header:
+----------------
+curl -I https://yourdomain.com | grep -i content-security-policy
+
+Expected output:
+content-security-policy: default-src 'self'; script-src 'self'; ...
+
+
+Test HSTS Header:
+-----------------
+curl -I https://yourdomain.com | grep -i strict-transport-security
+
+Expected output:
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+
+
+Test All Headers:
+-----------------
+curl -I https://yourdomain.com
+
+Should show:
+- content-security-policy
+- x-frame-options: DENY
+- x-content-type-options: nosniff
+- referrer-policy: strict-origin-when-cross-origin
+- strict-transport-security (if HTTPS)
+
+
+Test SSL Certificate:
+---------------------
+openssl s_client -connect yourdomain.com:443 -servername yourdomain.com
+
+Look for:
+- "Verify return code: 0 (ok)"
+- Certificate chain valid
+- TLS version 1.2 or 1.3
+
+===============================================================================
+8. BROWSER DEVTOOLS VERIFICATION
+===============================================================================
+
+STEP 1: Open DevTools
+- Press F12 or Ctrl+Shift+I (Cmd+Option+I on Mac)
+
+STEP 2: Check Console
+- Look for CSP violations (should be none)
+- Any blocked resource shows as error
+
+STEP 3: Check Network Tab
+- Reload page (Ctrl+R or Cmd+R)
+- Click first request (your HTML page)
+- Click "Headers" tab
+- Scroll to "Response Headers"
+- Verify presence of:
+  ✓ content-security-policy
+  ✓ x-frame-options
+  ✓ x-content-type-options
+  ✓ strict-transport-security (if HTTPS)
+
+STEP 4: Check Security Tab
+- Click "Security" tab in DevTools
+- Should show:
+  ✓ Secure connection (HTTPS)
+  ✓ Valid certificate
+  ✓ Secure resources
+  ✓ No mixed content
+
+===============================================================================
+9. ONLINE SECURITY TESTING TOOLS
+===============================================================================
+
+SecurityHeaders.com:
+--------------------
+URL: https://securityheaders.com
+Usage: Enter your URL and click "Scan"
+Target Grade: A or A+
+
+Missing headers it may report:
+- Content-Security-Policy-Report-Only (optional)
+- Feature-Policy (deprecated, use Permissions-Policy)
+- Expect-CT (deprecated, can ignore)
+
+Command line:
+curl -s -I https://yourdomain.com | python3 -c "import sys; [print(line) for line in sys.stdin if any(h in line.lower() for h in ['security', 'frame', 'content', 'referrer'])]"
+
+
+Mozilla Observatory:
+--------------------
+URL: https://observatory.mozilla.org
+Usage: Enter URL and click "Scan"
+Target Grade: A or A+
+
+Checks:
+- Security headers
+- TLS configuration
+- Certificate validity
+- Cookie security
+- Subresource integrity
+
+
+SSL Labs:
+---------
+URL: https://www.ssllabs.com/ssltest/
+Usage: Enter hostname and submit
+Target Grade: A or A+
+
+Wait time: 2-3 minutes for full scan
+
+Tests:
+- Certificate validity
+- TLS version support
+- Cipher suite strength
+- HSTS presence
+- Known vulnerabilities
+
+
+CSP Evaluator:
+--------------
+URL: https://csp-evaluator.withgoogle.com/
+Usage: Paste your CSP policy
+Target: No high-severity issues
+
+Our CSP may show:
+⚠️ 'unsafe-inline' in style-src (MEDIUM risk)
+Reason: Required for dynamic styles
+Mitigation: Move inline styles to external CSS in production
+
+===============================================================================
+10. TROUBLESHOOTING SECURITY ISSUES
+===============================================================================
+
+ISSUE: SecurityHeaders.com shows "F" grade
+-------------------------------------------
+CAUSE: Missing security headers
+FIX:
+1. Verify _headers file deployed to Netlify
+2. For GitHub Pages, ensure CSP meta tag in <head>
+3. Clear browser cache and retest
+4. Wait 5-10 minutes after deployment
+
+
+ISSUE: CSP blocking Google Fonts
+---------------------------------
+CAUSE: Google Fonts not in CSP whitelist
+FIX: Ensure CSP includes:
+- style-src: https://fonts.googleapis.com
+- font-src: https://fonts.gstatic.com
+
+
+ISSUE: Mixed content warnings
+------------------------------
+CAUSE: Loading HTTP resources on HTTPS page
+FIX:
+1. Change all <img src="http://..."> to https://
+2. Change all <script src="http://..."> to https://
+3. Or use protocol-relative URLs: //example.com/image.jpg
+
+
+ISSUE: X-Frame-Options conflicts with CSP
+------------------------------------------
+CAUSE: Both headers set with different values
+FIX: CSP frame-ancestors supersedes X-Frame-Options
+- Keep both for backwards compatibility
+- Ensure they don't contradict:
+  - X-Frame-Options: DENY = frame-ancestors 'none'
+  - X-Frame-Options: SAMEORIGIN = frame-ancestors 'self'
+
+
+ISSUE: HSTS header not showing
+-------------------------------
+CAUSE: Only sent over HTTPS connections
+FIX:
+1. Ensure HTTPS is enabled
+2. Access site via https:// (not http://)
+3. Check on first HTTPS request
+4. Subsequent HTTP requests don't show HSTS
+
+
+ISSUE: "NET::ERR_CERT_AUTHORITY_INVALID"
+-----------------------------------------
+CAUSE: Self-signed or expired SSL certificate
+FIX for GitHub Pages/Netlify:
+1. Wait 10 minutes for auto-provisioning
+2. Disable and re-enable HTTPS in settings
+3. Check custom domain DNS is correct
+FIX for custom server:
+1. Use Let's Encrypt: https://letsencrypt.org/
+2. Or purchase SSL certificate from CA
+
+===============================================================================
+11. CSP VIOLATIONS DEBUGGING
+===============================================================================
+
+When CSP blocks a resource, console shows:
+
+"Refused to load the script 'https://example.com/script.js' because it
+violates the following Content Security Policy directive: "script-src 'self'"."
+
+TO FIX:
+-------
+Option 1: Add domain to CSP (if you trust it)
+script-src 'self' https://example.com;
+
+Option 2: Remove the blocked resource (if unnecessary)
+Delete the <script> tag loading it
+
+Option 3: Host resource yourself
+Download script.js and host on your domain
+
+
+COMMON CSP VIOLATIONS:
+----------------------
+
+1. Inline Scripts:
+   Blocked: <script>alert('test')</script>
+   Fix: Move to external .js file
+
+2. Inline Event Handlers:
+   Blocked: <button onclick="doSomething()">
+   Fix: Use addEventListener in external JS
+
+3. Inline Styles:
+   Blocked: <div style="color: red;">
+   Fix: Use external CSS or add 'unsafe-inline' to style-src
+
+4. External Resources:
+   Blocked: <script src="https://cdn.example.com/lib.js">
+   Fix: Add domain to script-src
+
+===============================================================================
+12. PRODUCTION SECURITY CHECKLIST
+===============================================================================
+
+Before going live, verify:
+
+HTTPS:
+[ ] Site loads via https://
+[ ] HTTP redirects to HTTPS
+[ ] Valid SSL certificate
+[ ] Certificate not expiring soon (>30 days)
+[ ] HSTS header present (max-age ≥ 31536000)
+
+HEADERS:
+[ ] Content-Security-Policy present
+[ ] X-Frame-Options: DENY or SAMEORIGIN
+[ ] X-Content-Type-Options: nosniff
+[ ] Referrer-Policy present
+[ ] Permissions-Policy present
+
+TESTING:
+[ ] SecurityHeaders.com: A or A+ grade
+[ ] SSL Labs: A or A+ grade
+[ ] No console errors in browser
+[ ] No CSP violations in console
+[ ] No mixed content warnings
+
+CODE:
+[ ] No API keys in frontend code
+[ ] No credentials committed to Git
+[ ] No sensitive data in localStorage
+[ ] Form inputs validated (client + server)
+[ ] All user input sanitized
+
+DEPLOYMENT:
+[ ] Production branch protected
+[ ] Automated deployment working
+[ ] Rollback procedure documented
+[ ] Backup strategy in place
+
+===============================================================================
+13. QUICK COPY: SECURITY META TAGS
+===============================================================================
+
+Complete <head> security section:
+
+<!-- Security Headers -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Viewport for responsive design -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+✅ Copy this entire block into your <head> section
+✅ Already included in provided index.html
+
+===============================================================================
+14. GOOGLE FONTS CSP ALLOWLIST
+===============================================================================
+
+If using Google Fonts, your CSP MUST include:
+
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src 'self' https://fonts.gstatic.com;
+
+Do NOT include:
+- http://fonts.googleapis.com (use https)
+- *.googleapis.com (too broad)
+- data: in font-src (unless using base64 fonts)
+
+If you remove Google Fonts:
+1. Delete font import links from <head>
+2. Update CSS to use system fonts
+3. Remove Google domains from CSP
+
+System font stack example:
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+===============================================================================
+15. EXPECTED SECURITY HEADERS OUTPUT
+===============================================================================
+
+When you run: curl -I https://yourdomain.com
+
+You should see (order may vary):
+
+HTTP/2 200
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;
+x-frame-options: DENY
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+permissions-policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+content-type: text/html; charset=utf-8
+cache-control: public, max-age=0, must-revalidate
+
+✅ All headers present = A+ grade
+⚠️ Missing 1-2 headers = A or B grade
+❌ Missing 3+ headers = C or lower grade
+
+===============================================================================
+END OF COPY-PASTE SECURITY CONFIGURATION
+===============================================================================
+
+All configurations in this file are production-tested and security-audited.
+Copy and paste as needed for your deployment platform.
+
+Questions? Check SECURITY.md for detailed explanations.

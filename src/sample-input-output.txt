@@ -1,0 +1,297 @@
+========================================
+SAMPLE INPUT/OUTPUT GUIDE
+Content Replacement Instructions
+========================================
+
+This file lists ALL placeholders in the portfolio that need to be replaced with your personal information.
+
+FORMAT: PLACEHOLDER → Example Replacement
+
+========================================
+PERSONAL INFORMATION
+========================================
+
+REPLACE_NAME → John Smith
+REPLACE_EMAIL → john.smith@example.com
+REPLACE_USERNAME → johnsmith (GitHub username)
+REPLACE_SHORT_BIO_150_WORDS → 
+    "A dedicated cybersecurity professional with 3 years of experience in penetration testing, 
+    vulnerability assessment, and security consulting. Specialized in web application security 
+    and network defense. Holds certifications in ethical hacking and has successfully identified 
+    and remediated critical vulnerabilities for Fortune 500 clients. Passionate about staying 
+    current with emerging threats and contributing to the security community through open-source 
+    tools and educational content. Proficient in Python, Bash, and various security frameworks 
+    including OWASP and NIST. Committed to continuous learning and maintaining a strong ethical 
+    foundation in all security work."
+
+========================================
+PROJECT 1 (Web Application Security)
+========================================
+
+REPLACE_PROJECT_1_TITLE → Vulnerable Web App Penetration Test
+REPLACE_PROJECT_1_SHORT_DESCRIPTION → Comprehensive security assessment of an intentionally vulnerable web application, identifying OWASP Top 10 vulnerabilities and providing remediation guidance.
+REPLACE_PROJECT_1_FULL_DESCRIPTION → 
+    Conducted a full-scope penetration test on DVWA (Damn Vulnerable Web Application) to practice 
+    identifying and exploiting common web vulnerabilities. The assessment included reconnaissance, 
+    vulnerability scanning, manual testing, and exploitation of SQL injection, XSS, CSRF, insecure 
+    authentication, and file upload vulnerabilities. Documented findings in a professional penetration 
+    test report with risk ratings, evidence screenshots, and step-by-step remediation recommendations. 
+    This project demonstrated practical application of OWASP methodology and hands-on experience with 
+    Burp Suite, SQLMap, and custom Python scripts for automation.
+
+REPLACE_PROJECT_1_GITHUB_URL → https://github.com/johnsmith/webapp-pentest
+REPLACE_PROJECT_1_DEMO_URL → https://github.com/johnsmith/webapp-pentest/blob/main/report.pdf
+
+========================================
+PROJECT 2 (Network Security)
+========================================
+
+REPLACE_PROJECT_2_TITLE → Network Security Monitoring Lab
+REPLACE_PROJECT_2_SHORT_DESCRIPTION → Built a home lab environment to practice network traffic analysis, intrusion detection, and firewall configuration using open-source tools.
+REPLACE_PROJECT_2_FULL_DESCRIPTION → 
+    Designed and implemented a virtualized network security lab using VirtualBox with multiple VMs 
+    (pfSense firewall, Security Onion IDS, Ubuntu server, Kali Linux attacker). Configured network 
+    segmentation, firewall rules, and Snort IDS signatures to detect common attack patterns. Simulated 
+    various attack scenarios (port scanning, brute force, DoS) and analyzed captured traffic using 
+    Wireshark. Created custom detection rules for malicious activity and generated alerts. This project 
+    provided hands-on experience with network defense strategies and real-time threat monitoring.
+
+REPLACE_PROJECT_2_GITHUB_URL → https://github.com/johnsmith/network-security-lab
+REPLACE_PROJECT_2_DOCS_URL → https://github.com/johnsmith/network-security-lab/wiki
+
+========================================
+PROJECT 3 (Penetration Testing)
+========================================
+
+REPLACE_PROJECT_3_TITLE → HackTheBox CTF Challenges
+REPLACE_PROJECT_3_SHORT_DESCRIPTION → Solved 15+ HackTheBox machines demonstrating skills in enumeration, privilege escalation, and exploit development.
+REPLACE_PROJECT_3_FULL_DESCRIPTION → 
+    Completed various HackTheBox Capture The Flag (CTF) challenges ranging from easy to medium difficulty. 
+    Techniques employed included network enumeration with Nmap, web application fuzzing, exploiting 
+    misconfigurations, privilege escalation via kernel exploits and SUID binaries, lateral movement, and 
+    post-exploitation data extraction. Each machine was documented with detailed write-ups including 
+    methodology, tools used, commands executed, and lessons learned. This project showcased practical 
+    penetration testing skills and the ability to think creatively to overcome security obstacles.
+
+REPLACE_PROJECT_3_GITHUB_URL → https://github.com/johnsmith/htb-writeups
+REPLACE_PROJECT_3_REPORT_URL → https://github.com/johnsmith/htb-writeups/blob/main/machines.md
+
+========================================
+CERTIFICATIONS
+========================================
+
+REPLACE_CERT_1_NAME → Certified Ethical Hacker (CEH)
+REPLACE_CERT_1_ISSUER → EC-Council
+REPLACE_CERT_1_DATE → June 2024
+
+REPLACE_CERT_2_NAME → CompTIA Security+
+REPLACE_CERT_2_ISSUER → CompTIA
+REPLACE_CERT_2_DATE → March 2023
+
+REPLACE_CERT_3_NAME → eLearnSecurity Junior Penetration Tester (eJPT)
+REPLACE_CERT_3_ISSUER → eLearnSecurity (INE)
+REPLACE_CERT_3_DATE → January 2023
+
+========================================
+BLOG POSTS
+========================================
+
+REPLACE_BLOG_1_DATE → November 10, 2024
+REPLACE_BLOG_2_DATE → October 15, 2024
+
+(Note: Blog post content is already written in index.html but can be customized)
+
+========================================
+ACADEMIC REPORT PLACEHOLDERS
+========================================
+
+(in implementation_report_template.txt)
+
+REPLACE_STUDENT_ID → 123456789
+REPLACE_COURSE_NAME → CYB301 - Web Security Fundamentals
+REPLACE_SUBMISSION_DATE → December 1, 2024
+REPLACE_DEPLOYED_URL → https://johnsmith.github.io/portfolio/
+REPLACE_GITHUB_REPO_URL → https://github.com/johnsmith/portfolio
+REPLACE_HOSTING_PLATFORM → GitHub Pages (or Netlify)
+REPLACE_LIGHTHOUSE_SCORE → 98
+REPLACE_WAVE_ERRORS → 0
+REPLACE_SCREEN_READER → NVDA
+REPLACE_SECURITY_HEADERS_SCORE → A+
+
+========================================
+FILES TO EDIT
+========================================
+
+PRIMARY FILES (MUST EDIT):
+1. index.html
+   - Line 6: <meta name="description" content="...">
+   - Line 7: <title>
+   - Line 19: Logo/Name in <nav>
+   - Lines 26-32: Navigation doesn't need editing
+   - Lines 39-47: Home section (name, bio, title)
+   - Lines 55-103: Projects section (all 3 projects)
+   - Lines 150-166: Certifications section (all 3 certs)
+   - Lines 173-193: Blog dates
+   - Line 249: Footer name
+   - Line 250: Footer email
+
+2. js/main.js
+   - Lines 8-41: projectData object (all 3 projects' full details)
+   - Line 184: mailto email address in form submission
+   - Line 189: alert message email address
+
+3. README.md
+   - Line 1: Portfolio title
+   - Line 93: GitHub username (in deployment commands)
+   - Line 94: Repository name
+   - Line 95: Push command
+   - Line 96: GitHub Pages URL
+   - Line 229: Footer name/username/email
+
+4. deploy-instructions.txt
+   - Multiple instances of REPLACE_NAME and REPLACE_USERNAME
+
+OPTIONAL FILES:
+5. implementation_report_template.txt
+   - All academic placeholders (student ID, course, dates, URLs, scores)
+
+========================================
+IMAGE FILES TO ADD
+========================================
+
+LOCATION: /images/ folder
+
+REQUIRED PLACEHOLDERS:
+- desktop.png (placeholder included) → Replace with your project screenshot (desktop view, ~1920x1080, ≤200KB)
+- mobile.png (placeholder included) → Replace with your project screenshot (mobile view, ~375x812, ≤200KB)
+
+RECOMMENDATIONS:
+- Use PNG or JPG format
+- Optimize images (use TinyPNG.com or similar)
+- Recommended tools: Figma, Adobe XD, Photoshop, or screenshot tools
+- For demo purposes, you can use screenshots of:
+  - Kali Linux terminal running security tools
+  - Burp Suite interface
+  - Network traffic in Wireshark
+  - Your lab environment
+  - Project code in VS Code
+
+========================================
+SEARCH & REPLACE TIPS
+========================================
+
+Use your code editor's "Find and Replace All" feature:
+
+1. Find: REPLACE_NAME
+   Replace: Your Full Name
+
+2. Find: REPLACE_EMAIL
+   Replace: your.email@example.com
+
+3. Find: REPLACE_USERNAME
+   Replace: your-github-username
+
+4. Find: REPLACE_PROJECT_1_TITLE
+   Replace: Your Project 1 Title
+   
+   ... and so on for all placeholders
+
+RECOMMENDED ORDER:
+1. Personal info (name, email, username)
+2. Project 1 details
+3. Project 2 details
+4. Project 3 details
+5. Certifications
+6. Blog dates
+7. Academic report (if submitting)
+
+========================================
+VALIDATION CHECKLIST
+========================================
+
+After replacing all placeholders:
+
+✓ No "REPLACE_" text remains in any file
+✓ All email addresses are correct and consistent
+✓ All URLs point to real repositories or say "Coming Soon"
+✓ Project descriptions are 120-200 words each
+✓ Certification dates are realistic (not in the future)
+✓ Blog dates are in the past
+✓ Images are in /images/ folder and referenced correctly
+✓ HTML validates (use https://validator.w3.org)
+✓ No broken links (use https://validator.w3.org/checklink)
+
+========================================
+EXAMPLE COMPLETED CONTENT
+========================================
+
+BEFORE:
+<h1>Hi, I'm <span class="accent">REPLACE_NAME</span></h1>
+
+AFTER:
+<h1>Hi, I'm <span class="accent">John Smith</span></h1>
+
+---
+
+BEFORE:
+REPLACE_PROJECT_1_TITLE → 
+
+AFTER:
+Vulnerable Web App Penetration Test
+
+---
+
+BEFORE:
+const mailtoLink = `mailto:REPLACE_EMAIL?subject=${subject}&body=${body}`;
+
+AFTER:
+const mailtoLink = `mailto:john.smith@example.com?subject=${subject}&body=${body}`;
+
+========================================
+COMMON MISTAKES TO AVOID
+========================================
+
+❌ Leaving placeholder text in visible content
+❌ Using different names/emails in different files
+❌ Forgetting to update js/main.js project data
+❌ Using real email in mailto if you don't want spam (consider using contact@yourdomain.com)
+❌ Referencing project URLs that don't exist without adding "Coming Soon" or "#"
+❌ Using images larger than 200KB (slows page load)
+❌ Forgetting to update page <title> and meta description
+
+========================================
+NEED PLACEHOLDER CONTENT?
+========================================
+
+If you don't have real projects/certifications yet, use these:
+
+PROJECTS:
+- "Cybersecurity Home Lab Setup" (document your learning environment)
+- "OWASP Top 10 Study Project" (create demos of each vulnerability)
+- "CTF Challenge Write-ups" (document TryHackMe or HackTheBox solutions)
+
+CERTIFICATIONS:
+- "Google Cybersecurity Professional Certificate"
+- "CompTIA Security+ (In Progress)"
+- "Cisco Introduction to Cybersecurity"
+
+BLOG TOPICS:
+- "My Journey into Cybersecurity"
+- "Top 5 Tools Every Pentester Should Know"
+- "Understanding the CIA Triad"
+- "How to Set Up a Home Hacking Lab"
+
+========================================
+SUPPORT
+========================================
+
+If you're stuck, refer to:
+- README.md for deployment help
+- deploy-instructions.txt for step-by-step commands
+- implementation_report_template.txt for academic guidance
+
+For HTML/CSS/JS help:
+- MDN Web Docs: https://developer.mozilla.org
+- W3Schools: https://www.w3schools.com
+
+========================================

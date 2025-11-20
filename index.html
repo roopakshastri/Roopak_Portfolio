@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roopak Shastri — Portfolio</title>
+
+  <!-- Simple CSP (allows Google Fonts + same-origin scripts/styles) -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'self'">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="container header-inner">
+        <div class="brand" tabindex="0">
+          <h1>Roopak Shastri</h1>
+          <p class="tag">BCA • Cybersecurity student</p>
+        </div>
+
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+          <span class="burger"></span>
+        </button>
+
+        <nav id="main-nav" class="nav" role="navigation" aria-label="Main">
+          <a href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact" class="cta">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home" class="main">
+      <section class="hero container">
+        <div class="hero-inner">
+          <h2 class="hero-title">Hi — I’m <span class="accent">Roopak Shastri</span></h2>
+          <p class="hero-lead">I build clear, secure web projects and write short, practical security write-ups for class and practice labs.</p>
+          <p class="hero-actions">
+            <a class="btn" href="#projects">See Projects</a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section container">
+        <h3 class="section-title">Projects</h3>
+
+        <div class="filters" role="tablist" aria-label="Project filters">
+          <button class="chip active" data-filter="All" aria-pressed="true">All</button>
+          <button class="chip" data-filter="Web">Web</button>
+          <button class="chip" data-filter="Python">Python</button>
+          <button class="chip" data-filter="Security">Security</button>
+        </div>
+
+        <div id="projects-grid" class="grid" aria-live="polite">
+          <article class="card" data-tags="Web Security" tabindex="0">
+            <h4>Lecture-Time-Calculator</h4>
+            <p class="muted">Calculates how many lecture hours are required to fulfil course requirements.</p>
+            <div class="meta">
+              <span class="tag">HTML</span>
+              <span class="tag">JS</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="https://github.com/Uday-Misal/Lecture-Time-Calculator" target="_blank" rel="noreferrer">Repo</a>
+              <button class="btn small open-modal" data-title="Lecture-Time-Calculator" data-desc="Calculates required lecture hours for course requirements.">View</button>
+            </div>
+          </article>
+
+          <article class="card" data-tags="Security" tabindex="0">
+            <h4>Phishing-Awareness-Campaign</h4>
+            <p class="muted">Educational templates + short training materials to reduce click-rates.</p>
+            <div class="meta"><span class="tag">Awareness</span></div>
+            <div class="card-actions">
+              <a class="link" href="#" target="_blank" rel="noreferrer">Docs</a>
+              <button class="btn small open-modal" data-title="Phishing-Awareness-Campaign" data-desc="Training materials and simulated campaigns for safe classroom use.">View</button>
+            </div>
+          </article>
+
+          <article class="card" data-tags="Web" tabindex="0">
+            <h4>SecureWeb-Portfolio</h4>
+            <p class="muted">Minimal portfolio showing HTTPS + CSP example.</p>
+            <div class="meta"><span class="tag">HTML</span><span class="tag">CSP</span></div>
+            <div class="card-actions">
+              <a class="link" href="#" target="_blank" rel="noreferrer">Demo</a>
+              <button class="btn small open-modal" data-title="SecureWeb-Portfolio" data-desc="Portfolio demonstrating simple web-security best practices.">View</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section container">
+        <h3 class="section-title">Skills</h3>
+        <ul class="skills-list">
+          <li>HTML & CSS (responsive)</li>
+          <li>Vanilla JavaScript</li>
+          <li>Basic network tools: Nmap, Wireshark</li>
+          <li>Phishing awareness & mitigations</li>
+        </ul>
+      </section>
+
+      <section id="blog" class="section container">
+        <h3 class="section-title">Blog (short reads)</h3>
+        <article class="blog-card card">
+          <h4>How phishing works (short)</h4>
+          <p>Phishing uses social engineering to trick users into revealing secrets. Prevention: MFA, link-checking, filters, and user training.</p>
+        </article>
+        <article class="blog-card card" style="margin-top:12px;">
+          <h4>Payload awareness</h4>
+          <p>Use isolated labs for payload demos and always document mitigations and ethical boundaries.</p>
+        </article>
+      </section>
+
+      <section id="contact" class="section container">
+        <h3 class="section-title">Contact</h3>
+        <form id="contact-form" class="card contact-card" action="mailto:roopakshastriwork@gmail.com" method="GET" enctype="text/plain" onsubmit="return validateContact(this)">
+          <label class="field"><span>Name</span><input name="name" required></label>
+          <label class="field"><span>Email</span><input name="email" type="email" required></label>
+          <label class="field"><span>Message</span><textarea name="message" rows="4"></textarea></label>
+          <div class="form-actions">
+            <button class="btn" type="submit">Send</button>
+            <button class="btn ghost" type="reset">Clear</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <small>Made by Roopak Shastri • roopakshastriwork@gmail.com</small>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-panel" role="document" tabindex="-1">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <h4 id="modal-title"></h4>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

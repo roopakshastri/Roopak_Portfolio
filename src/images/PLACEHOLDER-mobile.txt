@@ -1,0 +1,48 @@
+MOBILE SCREENSHOT PLACEHOLDER
+=============================
+
+This file represents where your mobile.png should be.
+
+INSTRUCTIONS:
+-------------
+1. Create or obtain a mobile screenshot (375x667px recommended)
+2. Name it exactly: mobile.png
+3. Place it in this /images/ folder
+4. Delete this PLACEHOLDER-mobile.txt file
+
+TEMPORARY SOLUTION:
+-------------------
+If you need to test the site before you have screenshots, you can:
+
+Option 1: Use a placeholder image service
+- Replace src in index.html:
+  <img src="https://via.placeholder.com/375x667/0a192f/00d9ff?text=Mobile+Screenshot">
+
+Option 2: Use desktop screenshot (will work but not ideal)
+- Copy desktop.png and rename to mobile.png
+- The site will work, just won't look perfect
+
+Option 3: Use browser DevTools
+- Open your deployed site
+- Press F12, then Ctrl+Shift+M (device toolbar)
+- Select iPhone or Android device
+- Take screenshot (Ctrl+Shift+P > "Capture screenshot")
+
+RECOMMENDED SPECS:
+------------------
+- Dimensions: 375x667px (iPhone) or 360x640px (Android)
+- Format: PNG
+- File size: <150KB
+- Content: Mobile app interface or responsive web view
+
+WHERE IT'S USED:
+----------------
+- Project card 2 (OWASP Top 10 Lab Environment)
+- Demonstrates mobile/responsive projects
+
+TOOLS FOR MOBILE SCREENSHOTS:
+------------------------------
+- Browser DevTools (easiest)
+- Android: Power + Volume Down
+- iPhone: Power + Volume Up
+- Emulators: Android Studio, Xcode Simulator
